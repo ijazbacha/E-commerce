@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+     <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+
+    <title>Payment done</title>
+
+ <style>
+
+    *{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  font-family: 'Abel', sans-serif;
+  }
+
+payment{
+  background-color: #CBD2D0;
+  min-height: calc(100vh - 98px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav{
+  background: #282828;
+}
+
+.height{
+	line-height: 40px;
+}
+
+.banner h3{
+  border-top: 3px dotted #4C5760;
+  border-bottom: 3px dotted #4C5760;
+  animation: fromleft;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  
+}
+
+@keyframes fromleft{
+  0%{transform: translateX(-100px); opacity: 0;}
+  50%{transform: translateX(40px);}
+  100%{transform: translateX(0 px); opacity: 1;}
+}
+
+.animation-main-btn{
+  animation: fromright;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fromright{
+  0%{transform: translateX(100px); opacity: 0;}
+  50%{transform: translateX(-40px);}
+  100%{transform: translateX(0 px); opacity: 1;}
+}
+
+
+</style>
+
+
+    {% load static %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg text-secondary nav navbar-light" >
+   <div class="container">
+    
+  <a class="navbar-brand" href="#"><img src='{% static "shop/logo.png" %}' alt=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+      
+<button class="btn btn-outline-success my-2 mx-3 my-sm-0" onclick="myfun2()">Home</button>
+<button class="btn btn-outline-success my-2 my-sm-0" onclick="myfun()">Download Receipt</button>
+</div>
+</div>
+ <h4 class="float-right mx-auto mr-3 text-success text-capitalize">payment successfully done! </h4>
+</nav>
+
+ <payment>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="banner text-center">
+            <h3 class=" height w-50 mx-auto text-success text-capitalize"><b>Thanks for ordering with us. Your order id is <strong class="text-primary">{{order_id}}</strong>. Use it to track your order!</b></h3>
+            <button class="btn btn-success mt-3 my-2 text-center animation-main-btn" onclick="myfun()">Download Receipt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </payment>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<script>
+ {% if thank %}
+//alert('Thanks for contact with us.');
+//document.location = "/shop/invoice";
+function myfun(){
+	localStorage.clear();
+	document.location = "/shop/invoice";
+}
+
+function myfun2(){
+	localStorage.clear();
+	document.location = "/shop";
+}
+{% endif %}
+</script>

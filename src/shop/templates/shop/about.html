@@ -1,0 +1,64 @@
+{% extends 'shop/nav.html' %}
+
+{% block title %} about {% endblock %}
+
+{% block css %} 
+
+about{
+	background-color: #CBD2D0;
+	min-height: calc(100vh - 98px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.img-wrap{
+	width: 100%;
+}
+
+.img-wrap img{
+	width: 100%;
+	padding: 10px;
+	border-radius: 50%;
+	box-shadow: 0 0 10px #999999;
+}
+
+#aboutus{
+	margin-bottom: 25px;
+}
+
+#img-text{
+	margin-bottom: 25px;
+}
+{% endblock %}
+
+{% load static %}
+
+{% block body %}
+
+<about>
+<section id="aboutus">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7">
+				<h2 class="text-center">E SHOP</h2>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+			</div>
+
+
+			<div class="col-sm-5" id="img-text">
+				<h2 class="text-center">Developed by :</h2>
+				<div class="img-wrap ">
+					<img src='{% static "shop/about.jpg" %}'>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+	
+</section>
+</about>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'shop/nav.html' %}
+ 
+{% block title %}Make Payment{% endblock %}
+
+{% block css %} 
+
+payment{
+	background-color: #CBD2D0;
+	min-height: calc(100vh - 100px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.height{
+  min-height: calc(100vh - 94px);
+}
+
+.banner{
+  
+  margin-bottom: 70px;
+  
+}
+
+.banner h2{
+  font-size: 50px;
+  margin-bottom: 20px;
+  
+}
+
+{% endblock %}
+
+{% block body %}
+<payment>
+    
+    
+    <div class="container">
+      <div class="row height align-items-center justify-content-center">
+        <div class="col">
+          <div class="banner text-center">
+           <h2 class=" w-1 mx-auto text-capitalize">Pay with PayPal</h2>
+           <hr>
+            {{ form.render }} 
+          </div>
+        </div>
+      </div>
+    </div>
+</payment>
+{% endblock %}

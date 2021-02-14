@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <title>Customer Bill</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                
+                text-align: center;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+
+            table{
+                border-bottom: 1px solid #d6d4d4;
+                font-family: sans-serif;
+                font-size: 13px;
+                vertical-align: middle;
+            }
+
+            .footer{
+               text-align: center;
+            }
+
+            .footer{
+               font-size: 13px;
+               font-family: sans-serif;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='header'>
+                <p class='title'>Customer Bill # {{ Invoice_id }}</p>
+            </div>
+        <div>
+          <div class='details'>
+            <table>
+                <thead>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Order Id:</td>
+
+                        <td>{{ Invoice_id }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Bill to:</td>
+                    
+                        <td>{{ customer_name }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Email:</td>
+                    
+                        <td>{{ email }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Address:</td>
+                    
+                        <td>{{ address }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Phone:</td>
+                    
+                        <td>{{ phone }}</td>
+                    </tr>
+
+                      <tr>
+                        <td>Amount:</td>
+                    
+                        <td>{{ amount }}.00</td>
+                    </tr>
+
+                </tbody>
+            </table>
+          <!--    </table>
+            Order_Id: {{ Invoice_id }}<br>
+            Bill to:  {{ customer_name }}<br/>
+            Email:    {{ email }}<br/>
+            Address:  {{ address }}<br/>
+            Phone:    {{ phone }}<br/>
+            Amount:   {{ amount }}<br/>
+            Date:     {{ today }}
+            <hr class='hrItem' />-->
+        </div> 
+        <div class="footer">
+
+        <P>Thanks for shoping with us.For any detials contact with us!</P>
+        <p>Address : Agriculture University Peshawar</p>
+        <p>Email : Contact@gmail.com</p>
+        <p>Phone : +91 234567890</p>
+        </div>
+        <!--  <div class="table-box">
+            <div class="table-row">
+                <div class="table-cell">
+                    <p>Customer Bill # {{ Invoice_id }}</p>
+                </div>
+            </div>
+        </div>-->
+
+       
+
+
+    </div>
+</div> 
+    </body>
+</html>

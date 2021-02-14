@@ -1,0 +1,64 @@
+{% extends 'shop/nav.html' %}
+
+{% block title %} Contact {% endblock %}
+
+{% block css %} 
+
+contact{
+	background-color: #CBD2D0;
+	min-height: calc(100vh - 98px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+{% endblock %}
+
+{% block body %} 
+
+<contact>
+<div class="container my-2">
+	<div class="row">
+		<div class="col">
+	<h1 class="">Contact Us</h1>
+	<form action="/shop/contact/" method="post"> {% csrf_token %}
+	  <div class="form-group">
+	    <label for="name">Name</label>
+	    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" required="">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="email">Email</label>
+	    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required="">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="phone">Phone</label>
+	    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Number" required="">
+	  </div>
+
+	 <div class="form-group">
+       <label for="desc">How May I Help You?</label>
+       <textarea class="form-control" id="desc" name="desc" rows="3" placeholder="How May I Help You?" required=""></textarea>
+ 	 </div>
+
+ 	 <button type="submit" class="btn btn-success">Submit</button>
+	 
+	  
+	</form>
+</div>
+</div>
+</div>
+</contact>
+
+ {% endblock %}
+
+
+{% block js %}
+<script>
+ {% if thank %}
+alert('Thanks for contact with us.');
+document.location = "/shop";
+{% endif %}
+</script>
+{% endblock %}

@@ -1,0 +1,186 @@
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+    <title> {% block title %} {% endblock %} </title>
+    {% load static %}
+    <style>
+        *{
+  padding: 0;
+  margin: 0;
+}
+
+.nav{
+  background: #282828;
+}
+
+.primary-color{
+  color: #fff !important;
+}
+
+
+.primary-color2{
+  color: #282828 !important;
+}
+
+
+
+    body{
+      font-family: 'Abel', sans-serif;
+      background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('{% static "shop/home2.jpg" %}');
+      min-height: 100vh;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+    }
+
+.nav ul li:hover {
+  color: #aba8a8;
+  border-bottom: 2px #aba8a8 solid !important;
+}
+
+.dropnav a:hover {
+  color: black !important;
+}
+
+.logoutnav a:hover {
+  
+  background-color: #aba8a8;
+  color: black !important;
+}
+.main{
+  color: #FC60A8;
+  font-size: 2rem;
+  border: 2px solid #FC60A8;
+  transition: all 2s ease-in-out;
+}
+
+
+    {% block css %} {% endblock %}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg text-secondary nav navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/shopingcart"><img src='{% static "shop/logo1.png" %}' alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link primary-color" href="/shop">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle primary-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu primary-color bg-dark dropnav" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item primary-color" href="/shop/manfashion">Man's Fashion</a>
+                            <a class="dropdown-item primary-color" href="/shop/girlfashion">Women Fashion</a>
+                            <a class="dropdown-item primary-color" href="/shop/computer">Computer</a>
+                            <a class="dropdown-item primary-color" href="/shop/electronic">Electronic</a>
+                            
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link primary-color" href="/shop/tracker">Tracker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link primary-color" href="/shop/about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link primary-color" href="/shop/contact">Contact Us</a>
+                    </li>
+                </ul>
+                <!-- search -->
+                <form method="get" action="/shop/search/" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <!-- cart button -->
+                    <button type="button" id="popcart" class="btn btn-outline-success mx-2" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamussagittis lacus vel augue laoreet rutrum faucibus.">
+                        Cart(<span id="cart">0</span>)
+                    </button>
+                </form>
+                <!-- Login button -->
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav  ml-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle primary-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{request.user}}
+                        </a>
+                        <div class="dropdown-menu logoutnav bg-dark primary-color" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item primary-color" href="/shop/logout/">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                {% else %}
+                <a href="/shop/login"><button class="btn btn-outline-success" data-toggle="modal" data-target="#loginModal">Login</button></a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <!-- login Modal -->
+    <!--
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">LOGIN HERE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action='/shop/login/' method='post' onsubmit="return valid()"> {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">User Name</label>
+                            <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Enter user name">
+                            <span id="loginuser" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Password</label>
+                            <input type="password" class="form-control" id="loginpassword" name="loginpassword" placeholder="Enter Password">
+                            <span id="pass" class="text-danger"></span>
+                        </div>
+                        <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- alert message -->
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message! </strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% block body %} {% endblock %}
+    <!-- Optional JavaScript -->
+    <script type="text/javascript" src='{% static "shop/all.js" %}'></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+
+
+    {% block js %} {% endblock %}
+  
+</body>
+
+</html>
